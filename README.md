@@ -1,2 +1,370 @@
-# Pelopor-Destinasi
-web
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelopor Destinasi - Langkah Ringkas. Kenangan Berkelas.</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* =================================
+           VARIABEL CSS & GAYA DASAR
+           ================================= */
+        :root {
+            --primary-dark: #1a3a3a; /* Hijau tua dari logo */
+            --primary-light: #c49a6c; /* Emas dari logo */
+            --bg-light: #f9f9f9;
+            --text-dark: #333;
+            --font-heading: 'Playfair Display', serif; /* Font untuk Judul (mirip logo) */
+            --font-body: 'Montserrat', sans-serif; /* Font untuk teks (mirip tagline) */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--primary-dark);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        /* =================================
+           HEADER & NAVIGASI
+           ================================= */
+        .navbar {
+            background-color: var(--primary-dark);
+            color: var(--primary-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 100px;
+            margin-right: 10px;
+        }
+
+        
+        
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--primary-light);
+            font-family: var(--font-body);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #ffffff;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 5px;
+        }
+
+        /* Tombol Menu Mobile (Hamburger) */
+        .menu-toggle {
+            display: none; /* Sembunyi di desktop */
+            font-size: 2rem;
+            color: var(--primary-light);
+            cursor: pointer;
+        }
+
+        /* =================================
+           HERO SECTION (Bagian Utama)
+           ================================= */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url(riduwan-gustama-K2KXbX8vxHE-unsplash.jpg); /* Ganti dengan gambar pemandangan */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-family: var(--font-body);
+            letter-spacing: 2px; /* Mirip tagline di logo */
+            text-transform: uppercase; /* Mirip tagline di logo */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 1rem 2.5rem;
+            margin-top: 2rem;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* =================================
+           BAGIAN DESTINASI
+           ================================= */
+        .destinations {
+            background-color: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .dest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .dest-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dest-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .dest-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .dest-card-content {
+            padding: 1.5rem;
+        }
+
+        .dest-card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .dest-card-content p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* =================================
+           FOOTER
+           ================================= */
+        .footer {
+            background-color: var(--primary-dark);
+            color: var(--primary-light);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* =================================
+           RESPONSIVE (Mobile)
+           ================================= */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* Sembunyikan menu di mobile */
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px; /* Tepat di bawah navbar */
+                left: 0;
+                background-color: var(--primary-dark);
+                text-align: center;
+            }
+
+            .nav-menu.active {
+                display: flex; /* Tampilkan saat di-klik */
+            }
+
+            .nav-menu li {
+                margin: 1.5rem 0;
+            }
+
+            .menu-toggle {
+                display: block; /* Tampilkan ikon hamburger */
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="fulllogo_transparent.png" alt="fulllogo_transparent.png">
+                <span class="logo-text"></span>
+            </a>
+
+            <div class="menu-toggle" id="mobile-menu">
+                &#9776; </div>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#destinasi">Destinasi</a></li>
+                <li><a href="#tentang">Tentang Kami</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero" id="home">
+            <h1>PELOPOR DESTINASI</h1>
+            <p>Langkah Ringkas. Kenangan Berkelas.</p>
+            <a href="#destinasi" class="cta-button">Jelajahi Sekarang</a>
+        </section>
+
+        <section class="destinations" id="destinasi">
+            <div class="container">
+                <h2 class="section-title">Destinasi Populer</h2>
+                <div class="dest-grid">
+                    
+                    <div class="dest-card">
+                        <img src="Bromo Mountain 🌄🇮🇩.png" alt="Bromo Sunrise">
+                        <div class="dest-card-content">
+                            <h3>Bromo Sunrise</h3>
+                            <p>Menyambut Mentari Pertama di Bromo. Bayangkan berdiri di atas lautan awan, udara pagi yang sejuk menyapa wajah, dan langit perlahan berubah warna — dari biru kelam menuju semburat jingga keemasan. Di depan mata, matahari muncul perlahan di balik Gunung Semeru, menyingkap keindahan alam yang begitu megah.</p>
+                        </div>
+                    </div>
+
+                    <div class="dest-card">
+                        <img src="https://i.pinimg.com/736x/b2/11/76/b21176966bca1049709ba9c6d619c619.jpg" alt="Destinasi Yogyakarta">
+                        <div class="dest-card-content">
+                            <h3>Yogyakarta</h3>
+                            <p>Yogyakarta, atau sering disapa Jogja, adalah kota yang tidak pernah kehabisan daya pikat. Di sini, budaya, sejarah, alam, dan keramahan berpadu menciptakan suasana yang istimewa—sempurna untuk setiap jenis liburan, mulai dari petualangan keluarga hingga momen intim bulan madu.</p>
+                        </div>
+                    </div>
+
+                    <div class="dest-card">
+                        <img src="https://i.pinimg.com/1200x/27/8c/b9/278cb97d8c12cf3271f75ec432ed322d.jpg" alt="Destinasi Puncak Bogor">
+                        <div class="dest-card-content">
+                            <h3>Puncak Bogor</h3>
+                            <p>Puncak Bogor adalah destinasi pelarian favorit yang menawarkan udara sejuk pegunungan, hamparan perkebunan teh yang hijau, dan pemandangan alam yang memukau. Berjarak dekat dari hiruk pikuk Jakarta, Puncak memberikan ketenangan dan beragam aktivitas yang cocok untuk semua usia, menjadikannya pilihan ideal baik untuk liburan keluarga maupun bulan madu.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="Tentang" id="tentang">
+            <div class="container">
+                <h2 class="section-title">Tentang Kami</h2>
+                <div class="dest-grid">
+
+
+        </section>
+
+
+        </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Pelopor Destinasi. Semua Hak Cipta Dilindungi.</p>
+            <p>Langkah Ringkas. Kenangan Berkelas.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script sederhana untuk tombol menu mobile
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
